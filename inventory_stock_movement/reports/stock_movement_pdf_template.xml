@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_inventory_stock_movement_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Inventory Stock Movement Report</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>UoM</th>
+                                <th>Opening Qty</th>
+                                <th>Incoming Qty</th>
+                                <th>Outgoing Qty</th>
+                                <th>Internal Transfers</th>
+                                <th>Adjustments</th>
+                                <th>Closing Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span t-field="doc.product_id.display_name"/></td>
+                                <td><span t-field="doc.uom_id.name"/></td>
+                                <td><span t-field="doc.opening_qty"/></td>
+                                <td><span t-field="doc.incoming_qty"/></td>
+                                <td><span t-field="doc.outgoing_qty"/></td>
+                                <td><span t-field="doc.internal_transfers"/></td>
+                                <td><span t-field="doc.adjustments"/></td>
+                                <td><span t-field="doc.closing_qty"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
