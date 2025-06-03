@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Menu -->
+    <menuitem id="menu_inventory_stock_movement_root" name="Stock Movement" parent="stock.menu_stock_reporting" sequence="100"/>
+
+    <!-- Action to open filter wizard -->
+    <record id="action_stock_movement_filter_wizard" model="ir.actions.act_window">
+        <field name="name">Stock Movement Filter</field>
+        <field name="res_model">stock.movement.filter.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_inventory_stock_movement" name="Stock Movement" parent="menu_inventory_stock_movement_root" action="action_stock_movement_filter_wizard" sequence="1"/>
+
+    <!-- Tree view for report -->
+    <record id="view_inventory_stock_movement_report_tree" model="ir.ui.view">
+        <field name="name">inventory.stock.movement.report.tree</field>
+        <field name="model">inventory.stock.movement.report</field>
+        <field name="arch" type="xml">
+            <tree string="Inventory Stock Movement Report" editable="false" create="false" delete="false">
+                <field name="product_id"/>
+                <field name="uom_id"/>
+                <field name="opening_qty"/>
+                <field name="incoming_qty"/>
+                <field name="outgoing_qty"/>
+                <field name="internal_transfers"/>
+                <field name="adjustments"/>
+                <field name="closing_qty"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view for expandable rows -->
+    <record id="view_inventory_stock_movement_report_form" model="ir.ui.view">
+        <field name="name">inventory.stock.movement.report.form</field>
+        <field name="model">inventory.stock.movement.report</field>
+        <field name="arch" type="xml">
+            <form string="Stock Movement Details" create="false" edit="false" delete="false">
+                <sheet>
+                    <group>
+                        <field name="product_id" readonly="1"/>
+                        <field name="uom_id" readonly="1"/>
+                        <field name="location_id" readonly="1"/>
+                        <field name="company_id" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="opening_qty" readonly="1"/>
+                        <field name="incoming_qty" readonly="1"/>
+                        <field name="outgoing_qty" readonly="1"/>
+                        <field name="internal_transfers" readonly="1"/>
+                        <field name="adjustments" readonly="1"/>
+                        <field name="closing_qty" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
